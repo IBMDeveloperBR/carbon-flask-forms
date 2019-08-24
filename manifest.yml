@@ -1,0 +1,7 @@
+applications:
+ - path: .
+   name: vnderlev-easyforms
+   random-route: false
+   memory: 1G
+   disk_quota: 1G
+   instances: 1

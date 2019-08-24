@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+<div id="top_title">
+  <div class="bx--row">
+    <div class="bx--col-lg-8 bx--offset-lg-4">
+      <h2 class="page-h2">
+        vnderlev flask-easyforms
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div id="loading_svg">
+  <div class="bx--row"><br><br>
+    <div class="bx--col-lg-8 bx--offset-lg-4">
+      <div align="center">
+        <img src="{{ url_for('static', filename='images/loading.svg') }}" id="loading">
+        <h2 class="page-h2"> Sua submissão está sendo avaliada, por favor aguarde. </h2>
+      </div><br><br>
+    </div>
+  </div>
+</div>
+
+<div id="formulary">
+  <form method=POST action="/"><br>
+    <div class="bx--row">
+      <div class="bx--col-lg-8 bx--offset-lg-4">
+
+        <div class="bx--form-item">
+          <label for="field1" class="bx--label">Field1:</label>
+          <div class="bx--form__helper-text">
+            field1 optional description.
+          </div>
+          <input required class="bx--text-input" id="field1" name="field1" type="text">
+        </div><br>
+
+        <div class="bx--form-item">
+          <label for="field2" class="bx--label">Field2:</label>
+          <input required class="bx--text-input" id="field2" name="field2" type="text">
+        </div><br>
+
+        <div class="bx--form-item">
+          <div class="bx--dropdown__wrapper ">
+            <label for="dropdown-id" class="bx--label">
+              dropdown:
+            </label>
+            <select name="field3">
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Example usage of `validators.py`
+        {% if cpf_error==True or email_error==True or name_error==True %}
+        <div data-notification class="bx--toast-notification bx--toast-notification--error" role="alert">
+          <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--toast-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm3.5 13.5l-8-8 1-1 8 8-1 1z"></path>
+            <path d="M13.5 14.5l-8-8 1-1 8 8-1 1z" data-icon-path="inner-path" opacity="0"></path>
+          </svg>
+          <div class="bx--toast-notification__details">
+            <h3 class="bx--toast-notification__title">Sua inscrição foi recusada.</h3><br>
+            <p class="bx--toast-notification__subtitle">
+            {% if email_error==True %} {{ email_error_msg }}<br> {% endif %}
+            {% if name_error==True %} {{ name_error_msg }}<br> {% endif %}
+            {% if cpf_error==True %} {{ cpf_error_msg }} {% endif %}
+            </p>
+            <p class="bx--toast-notification__caption">{{ timestamp }}</p>
+          </div>
+        </div>
+        {% endif %}
+        -->
+      </div>
+    </div>
+    
+    <br><br><br>
+
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="bx--row">
+      <div class="bx--col-lg-8 bx--offset-lg-4">
+        <div class="bx--form-item" id="submit_btn">
+          <button type=submit class="bx--btn bx--btn--primary" type="button" id="submit_btn">
+            Submeter!
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <br><br>
+
+</div>
+
+{% endblock %}

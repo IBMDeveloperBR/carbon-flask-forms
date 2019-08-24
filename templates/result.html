@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+<div class="bx--row">
+  <div class="bx--col-lg-8 bx--offset-lg-4">
+    <h2 class="page-h2">
+      Submissão enviada com sucesso!
+    </h2>
+    <br>
+    field1 = {{ field1 }}
+    <br>
+    field2 = {{ field2 }}
+    <br>
+    field3 = {{ field3 }}
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="bx--row">
+  <div class="bx--col-lg-8 bx--offset-lg-4">
+    <div class="bx--form-item">
+      <form action="{{ url_for('root') }}">
+        <input type=submit class="bx--btn bx--btn--primary" value="Voltar..." />
+      </form>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
