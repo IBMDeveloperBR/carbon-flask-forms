@@ -1,0 +1,6 @@
+werkzeug
+pyjwt
+gunicorn
+requests
+flask
+flask_sslify
