@@ -1,14 +1,18 @@
+import gunicorn_config
+import validators as vld
+
+from os import urandom, getenv
+import datetime as dt
+
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sslify import SSLify
 from flask_wtf.csrf import CSRFProtect
-import os, json, requests
-import datetime as dt
-import validators as vld
 
-# Setting up the flask application
+
+# Flask config
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.urandom(16)
-app.config['WTF_CSRF_SECRET_KEY'] = os.urandom(16)
+app.config['SECRET_KEY'] = urandom(16)
+app.config['WTF_CSRF_SECRET_KEY'] = urandom(16)
 sslify = SSLify(app) # Comment out this line if you are running flask locally, in development mode
 csrf = CSRFProtect(app)
 csrf.init_app(app)
@@ -64,11 +68,5 @@ def root():
         """
         return render_template('form.html')
 
-
-# On IBM Cloud Cloud Foundry, get the port number from the environment variable
-# PORT When running this app on the local machine, default the port to 8000
-PORT = int(os.getenv('PORT', 8000))
-HOST = '0.0.0.0'
-
 if __name__ == '__main__':
-    app.run(host=HOST, port=PORT, debug=False)
+    app.run(host="0.0.0.0", port=gunicorn_config.PORT, debug=False)
